@@ -4,31 +4,26 @@
 
 g++ cuenta.cpp -o cuenta.x
 
-rm cuenta.txt tiempo.txt
+rm cuenta.txt tiempo.txt tiempo1.txt
 
 ./cuenta.x Pi_2500000.txt cuenta.txt tiempo.txt
 
-split -n 10 -d --additional-suffix=.txt  Pi_2500000.txt parte
-for archivo in parte*; do 
-./cuenta.x $archivo cuenta.txt tiempo.txt
-done
-rm parte*
 
-split -n 20 -d --additional-suffix=.txt  Pi_2500000.txt parte
+for i in 1 10 20 50 100;do
+split -n $i -d --additional-suffix=.txt  Pi_2500000.txt parte
+start=($(date +%s%N)/1000000)
 for archivo in parte*; do 
 ./cuenta.x $archivo cuenta.txt tiempo.txt
 done
+end=($(date +%s%N)/1000000)
+runtime=$((end-start))
+echo $runtime >> tiempo1.txt
 rm parte*
+done
 
-split -n 50 -d --additional-suffix=.txt  Pi_2500000.txt parte
-for archivo in parte*; do 
-./cuenta.x $archivo cuenta.txt tiempo.txt
-done
-rm parte*
 
-split -n 100 -d --additional-suffix=.txt  Pi_2500000.txt parte
-for archivo in parte*; do 
-./cuenta.x $archivo cuenta.txt tiempo.txt
-done
-rm parte*
+python3 sample.py
+
+
+
 
