@@ -3,7 +3,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-data=np.loadtxt("tiempo.txt")
+data=np.loadtxt("tRun.txt")
 a=np.array([1,10,20,50,100])
 
 media=[]

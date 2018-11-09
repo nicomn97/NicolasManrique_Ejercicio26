@@ -1,4 +1,4 @@
-#PBS -l nodes=1:ppn=1,mem=16gb,walltime=00:05:00
+#PBS -l nodes=1:ppn=1,mem=16gb,walltime=00:00:30
 #PBS -M n.manrique10@uniandes.edu.co
 #PBS -m abe
 #PBS -N ejercicio26
@@ -10,7 +10,7 @@ module load gcc/4.9.4
 cd /hpcfs/home/fisi4028/n.manrique10/Ej26/NicolasManrique_Ejercicio26 
 g++ cuenta.cpp -o cuenta.x
 
-rm cuenta.txt tiempo.txt tRun.txt tiempo0* conteo0*
+rm cuenta.txt tiempo.txt tiempo0* conteo0*
 start=($(date +%s%N)/1000000)
 ./cuenta.x Pi_2500000.txt cuenta.txt tiempo.txt
 end=($(date +%s%N)/1000000)
