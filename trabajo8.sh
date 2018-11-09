@@ -1,7 +1,12 @@
-#!/bin/bash
+#PBS -l nodes=1:ppn=8,mem=16gb,walltime=00:05:00
+#PBS -M n.manrique10@uniandes.edu.co
+#PBS -m abe
+#PBS -N ejercicio26
 
-#wget https://raw.githubusercontent.com/ComputoCienciasUniandes/MetodosComputacionalesDatos/master/homework/2014-20/hw_1/Pi_2500000.txt
 
+module load anaconda/python3
+module load gcc/4.9.4 
+cd /hpcfs/home/fisi4028/n.manrique10/Ej26/NicolasManrique_Ejercicio26 
 g++ cuenta.cpp -o cuenta.x
 
 rm cuenta.txt tiempo.txt tRun.txt tiempo0* conteo0*
@@ -28,7 +33,3 @@ rm 0*
 done
 
 rm cuenta.txt tiempo.txt tiempo0* conteo0*
-
-
-
-
