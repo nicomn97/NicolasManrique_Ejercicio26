@@ -10,7 +10,15 @@ n=[]
 ind=0
 
 for i in range(np.shape(a)[0]):
-    ind+=a[i]
-    n.append(np.sum(data[ind-a[i]:ind-1]))
+    if (i==0):
+        ind+=a[i]
+        n.append(data[0])
+    else:
+        ind+=a[i]
+        n.append(np.sum(data[ind-a[i]:ind-1]))
 
-print(n)
+plt.figure(figsize=(18,9))
+plt.scatter(np.arange(5), n)
+plt.xlabel('Numero de divisiones del archivo')
+plt.ylabel('tiempo')
+plt.savefig("grafica.pdf")
